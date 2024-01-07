@@ -11,7 +11,11 @@
             </aside>
         </aside>
         {% if post.published_date %}
-            <time class="date">published: {{ post.published_date }}</time>
+            <div class="date">
+                <time>published: {{ post.published_date }}</time>
+            </div>
+        {% else %}
+            <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text | linebreaksbr }}</p>
