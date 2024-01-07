@@ -1,6 +1,15 @@
 {% extends "blog/base.html" %}
 {% block content %}
     <article class="post">
+        <aside class="post">
+            <aside class="actions">
+                {% if user.is_authenticated and user.pk == post.author.pk %}
+                    <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
+                        {% include "./icons/pencil-fill.svg" %}
+                    </a>
+                {% endif %}
+            </aside>
+        </aside>
         {% if post.published_date %}
             <time class="date">published: {{ post.published_date }}</time>
         {% endif %}
